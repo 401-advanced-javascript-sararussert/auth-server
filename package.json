@@ -1,0 +1,29 @@
+{
+  "name": "auth-server",
+  "version": "1.0.0",
+  "description": "authentication system, written in Express",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/401-advanced-javascript-sararussert/auth-server.git"
+  },
+  "author": "Sara Russert",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/401-advanced-javascript-sararussert/auth-server/issues"
+  },
+  "homepage": "https://github.com/401-advanced-javascript-sararussert/auth-server#readme",
+  "dependencies": {
+    "base-64": "^1.0.0",
+    "bcrypt": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongo": "^0.1.0",
+    "mongodb": "^3.6.2",
+    "mongoose": "^5.10.11"
+  }
+}
