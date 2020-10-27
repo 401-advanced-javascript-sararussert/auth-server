@@ -3,12 +3,14 @@
 ## Description of Project
 <-- Brief description of what this lab is -->
 ## Installing Auth Server
-download from git hub and npm install
-## Using <-- Project Name Here -->
-To use <-- Project Name -->, follow these steps:
-- Run commands can go here (this would be how to run the project, tests)
+git clone https://github.com/401-advanced-javascript-sararussert/auth-server.git 
+and npm install
+## Using Auth Server
+To use auth server, follow these steps:
+- npm start
+- npm test
 ## Acknowledgments 
-<-- If you get help from another person or website that will be put here -->
+Working with Michael, Spencer, and Kevin in Remo
 ## UML
 <-- UML image goes here -->
 
