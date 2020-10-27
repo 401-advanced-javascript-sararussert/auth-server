@@ -1,30 +1,34 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const base64 = require('base-64');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const userSchema = new mongoose.Schema({
-  username: { type: String, required: true},
-  password: { type: String, required: true }
+const UserSchema = new mongoose.Schema({
+  username: { type: String, required: true, unique: true },
+  password: { type: String, required: true, },
 });
 
-userSchema.methods.authenticateUser = async function() {
-  let username = this.username;
-  let password = this.password;
-  let hashedPassword = await bcrypt.hash(password, 10);
-  this.password = hashedPassword
-  return this;
+UserSchema.pre('save', async function () {
+  this.password = await bcrypt.hash(this.password, 10);
+});
+
+UserSchema.statics.authenticateBasic = async function (username, password) {
+  return this.findOne({ username })
+    .then(async user => {
+      const isValid = await bcrypt.compare(password, user.password);
+      if (isValid) {
+        const token = await user.generateToken();
+        return token;
+      }
+    });
 }
 
-userSchema.methods.generateTokens = async function() {
-  let token = jwt.sign({ username: this.username }, 'SECRET_STRING');
-  console.log('we are inside generate tokens ');
+
+UserSchema.methods.generateToken = async function () {
+  let token = await jwt.sign({ username: this.username }, 'SECRET_STRING');
   return token;
 }
 
-let CoolSchema = mongoose.model('users', userSchema);
 
-
-module.exports = CoolSchema;
+module.exports = mongoose.model('Users', UserSchema);
