@@ -4,6 +4,7 @@ const Users = require('./models/users-model.js');
 
 const basicMiddleware = require('./middleware/basic.js');
 const bearerMiddleware = require('./middleware/bearer.js');
+const oauthMW = require('./middleware/oauth.js');
 
 const router = express.Router();
 
@@ -27,6 +28,11 @@ router.post('/signup', (req, res, next) => {
       res.send(token);
     })
 });
+
+router.get('/oath', oauthMW, (req, res, next) => {
+  
+
+})
 
 
 module.exports = router;
