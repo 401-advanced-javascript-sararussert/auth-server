@@ -17,7 +17,7 @@ module.exports = {
       req.token = token;
       next();
     } else {
-      next('Unautorized');
+      next('Unauthorized');
     }
   }
 }
