@@ -1,7 +1,7 @@
 'use strict';
 
 const superagent = require('superagent');
-const users = require('./users.js');
+const users = require('../models/users-model.js');
 
 /*
   Resources
